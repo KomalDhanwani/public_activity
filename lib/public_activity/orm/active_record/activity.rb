@@ -15,8 +15,11 @@ module PublicActivity
         # Serialize parameters Hash
         serialize :parameters, Hash
 
+        geocoded_by :ip_address, :latitude => :lat, :longitude => :lng
+        after_validation :geocode
+
         # should recipient and owner be accessible?
-        attr_accessible :key, :owner, :parameters, :recipient, :trackable
+        attr_accessible :key, :owner, :parameters, :recipient, :trackable, :ip_address, :lat, :lng
       end
     end
   end

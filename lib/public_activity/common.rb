@@ -290,6 +290,14 @@ module PublicActivity
         )
       )
 
+      # user responsible for the activity
+      options[:ip_address] = PublicActivity.resolve_value(self,
+        (all_options.has_key?(:ip_address) ? all_options[:ip_address] : (
+          self.activity_owner || self.class.activity_owner_global
+          )
+        )
+      )
+
       # recipient of the activity
       options[:recipient] = PublicActivity.resolve_value(self,
         (all_options.has_key?(:recipient) ? all_options[:recipient] : (
