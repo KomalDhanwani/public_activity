@@ -9,6 +9,10 @@ class CreateActivities < ActiveRecord::Migration
       t.text    :parameters
       t.belongs_to :recipient, :polymorphic => true
 
+      t.string   :ip_address, :string
+      t.decimal  :lat, :precision => 10, :scale => 2
+      t.decimal  :lng, :precision => 10, :scale => 2
+
       t.timestamps
     end
 
